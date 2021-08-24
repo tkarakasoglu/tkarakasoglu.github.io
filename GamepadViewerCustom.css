@@ -7,6 +7,6 @@
     animation: colorhue 1s linear infinite;
 }
 
-.xbox .disconnected {
+.disconnected {
 	background: transparent;
 }
