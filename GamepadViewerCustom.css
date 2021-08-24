@@ -5,6 +5,7 @@
 
 .edit {
     animation: colorhue 1s linear infinite;
+	background: transparent;
 }
 
 .disconnected {
