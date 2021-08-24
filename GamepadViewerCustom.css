@@ -8,5 +8,9 @@
 }
 
 .disconnected {
-	background: transparent!important;
+	background: transparent !important;
+}
+
+.white {
+	background: url(https://tkarakasoglu.github.io/GamepadViewerCustomBg.svg);
 }
