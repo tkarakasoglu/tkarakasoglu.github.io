@@ -29,7 +29,7 @@
 	};
 
 	function getRanks() {
-	    $.get("http://api.yannismate.de/rank/epic/DEKOwasHere?playlists=ranked_1v1,ranked_2v2,ranked_3v3&hideMmr=true&hideDiv=true", function(text){
+	    $.get("https://api.yannismate.de/rank/epic/DEKOwasHere?playlists=ranked_1v1,ranked_2v2,ranked_3v3&hideMmr=true&hideDiv=true", function(text){
 	    	$('#idRanks').empty();
 			let ranked = text.split(" | ");
 			$.each(ranked, function( index, value ) {
