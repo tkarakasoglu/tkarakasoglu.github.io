@@ -1,0 +1,88 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Spartan:100,200,300,400,500,600,700,800,900%7CNunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i%7CUbuntu+Condensed:400" />
+<script>
+	let ranksBaseUrl = "https://trackercdn.com/cdn/tracker.gg/rocket-league/ranks/";
+	let ranks = {
+		"Unranked": "s4-0.png",
+		"Bronze I": "s4-1.png",
+		"Bronze II": "s4-2.png",
+		"Bronze III": "s4-3.png",
+		"Silver I": "s4-4.png",
+		"Silver II": "s4-5.png",
+		"Silver III": "s4-6.png",
+		"Gold I": "s4-7.png",
+		"Gold II": "s4-8.png",
+		"Gold III": "s4-9.png",
+		"Platinum I": "s4-10.png",
+		"Platinum II": "s4-11.png",
+		"Platinum III": "s4-12.png",
+		"Diamond I": "s4-13.png",
+		"Diamond II": "s4-14.png",
+		"Diamond III": "s4-15.png",
+		"Champion I": "s4-16.png",
+		"Champion II": "s4-17.png",
+		"Champion III": "s4-18.png",
+		"Grand Champion I": "s4-19.png",
+		"Grand Champion II": "s4-20.png",
+		"Grand Champion III": "s4-21.png",
+		"Supersonic Legend": "s4-22.png",
+	};
+
+	function getRanks() {
+	    $.get("http://api.yannismate.de/rank/epic/DEKOwasHere?playlists=ranked_1v1,ranked_2v2,ranked_3v3&hideMmr=true&hideDiv=true", function(text){
+	    	$('#idRanks').empty();
+			let ranked = text.split(" | ");
+			$.each(ranked, function( index, value ) {
+	    		let rank = value.split(": ");
+	    		createCard(rank[0], rank[1])
+			});
+	    });
+	}
+
+    function createCard(rankTitle, rankValue) {
+    	let classRank = "<div class='classRank'><img class='classRankImage' src='" + ranksBaseUrl + ranks[rankValue] + "'/><div class='classRankDesc'><div class='classRankTitle'>" + rankTitle + "</div><div class='classRankValue'>" + rankValue + "</div></div></div>"
+    	$('#idRanks').append(classRank);
+    }
+
+    setInterval(function() {
+		getRanks()
+	}, 60 * 1000);
+
+	getRanks()
+
+</script>
+<style>
+	.classRank {
+		height: 80px;
+		font-family: "Spartan";
+		font-weight: normal;
+		width: 310px;
+		background: rgba(22, 62, 118, 0.7);
+		margin-top: 7px;
+		margin-bottom: 7px;
+		border-radius: 5px;
+		color: white;
+	}
+	.classRankImage {
+		width: 80px;
+    	height: 80px;
+    	float: left;
+	}
+	.classRankDesc {
+		padding-top: 17px;
+		width: 320px;
+	}
+	.classRankTitle {
+		font-size: 15px;
+		padding-bottom: 6px;
+	}
+	.classRankValue {
+		font-size: 23px;
+		font-weight: 500;
+	}
+</style>
+
+<div id="idRanks">
+</div>
+
+
